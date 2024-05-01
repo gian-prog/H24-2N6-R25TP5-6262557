@@ -26,6 +26,7 @@ namespace BaladeurMultiFormats
             ChansonAAC chansonAAC = new ChansonAAC("Chansons\\Blame it on me.aac") ;
             ChansonMP3 chansonMP3 = new ChansonMP3("Chansons\\Billie Jean.mp3");
             ChansonWMA chansonWMA = new ChansonWMA("Chansons\\Bad Guy.wma");
+            Baladeur baladeur = new Baladeur();
         }
         #endregion
         //---------------------------------------------------------------------------------
