@@ -37,8 +37,51 @@ namespace BaladeurMultiFormats
 
         public void ConstruireLaListeDesChansons()
         {
-            throw new NotImplementedException();
+            try
+            {
 
+                if (Directory.Exists(NOM_RÉPERTOIRE))
+                {
+                    string[] fichiertab = Directory.GetFiles(NOM_RÉPERTOIRE);
+                    Array.Sort(fichiertab);
+                    foreach (string file in fichiertab)
+                    {
+                        if (File.Exists(file))
+                        {
+                            int cpt = 0;
+                            try
+                            {
+                                switch (file.Substring(file.Length - 3).ToUpper())
+                                {
+                                    case "AAC":
+                                        ChansonAAC chansonAAC = new ChansonAAC(file);
+                                        m_colChansons.Add(chansonAAC);
+                                        break;
+                                    case "MP3":
+                                        ChansonMP3 chansonMP3 = new ChansonMP3(file);
+                                        m_colChansons.Add(chansonMP3);
+                                        break;
+                                    case "WMA":
+                                        ChansonWMA chansonWMA = new ChansonWMA(file);
+                                        m_colChansons.Add(chansonWMA);
+                                        break;
+                                }
+                            }
+                            catch (Exception)
+                            {
+                                cpt++;
+                                MessageBox.Show("Baladeur",cpt+"chansons n'ont pu être chargées correctement",MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                            }
+                        }
+
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Baladeur", "Impossible de trouver le dossier contenant les chansons ! ",MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public void ConvertirVersAAC(int pIndex)

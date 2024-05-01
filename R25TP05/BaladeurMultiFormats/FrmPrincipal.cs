@@ -27,6 +27,7 @@ namespace BaladeurMultiFormats
             ChansonMP3 chansonMP3 = new ChansonMP3("Chansons\\Billie Jean.mp3");
             ChansonWMA chansonWMA = new ChansonWMA("Chansons\\Bad Guy.wma");
             Baladeur baladeur = new Baladeur();
+            baladeur.ConstruireLaListeDesChansons();
         }
         #endregion
         //---------------------------------------------------------------------------------
