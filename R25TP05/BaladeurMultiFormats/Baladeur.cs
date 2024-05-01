@@ -27,7 +27,14 @@ namespace BaladeurMultiFormats
         #region Méthodes
         public void AfficherLesChansons(ListView pListView)
         {
-            throw new NotImplementedException();
+            foreach (Chanson chans in m_colChansons)
+            {
+                ListViewItem vue = new ListViewItem(chans.Artiste);
+                vue.SubItems.Add(chans.Titre);
+                vue.SubItems.Add(chans.Annee.ToString());
+                vue.SubItems.Add(chans.Format);
+                pListView.Items.Add(vue);
+            }
         }
 
         public Chanson ChansonAt(int pIndex)

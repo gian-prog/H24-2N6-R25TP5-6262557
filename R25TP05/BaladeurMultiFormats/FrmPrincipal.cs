@@ -28,6 +28,8 @@ namespace BaladeurMultiFormats
             ChansonWMA chansonWMA = new ChansonWMA("Chansons\\Bad Guy.wma");
             Baladeur baladeur = new Baladeur();
             baladeur.ConstruireLaListeDesChansons();
+            baladeur.AfficherLesChansons(lsvChansons);
+            lblNbChansons.Text = baladeur.NbChansons.ToString();
         }
         #endregion
         //---------------------------------------------------------------------------------
