@@ -44,7 +44,7 @@ namespace BaladeurMultiFormats
         {
             Random random = new Random();
             int code = random.Next(3,15);
-            pobjFichier.WriteLine(OutilsFormats.DecoderWMA(pParoles,code));
+            pobjFichier.WriteLine(OutilsFormats.EncoderWMA(pParoles,code));
             pobjFichier.Close();
         }
         public override void EcrireEntete(StreamWriter pobjFichier)

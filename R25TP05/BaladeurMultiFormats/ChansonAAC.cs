@@ -39,7 +39,7 @@ namespace BaladeurMultiFormats
         }
         public override void EcrireParoles(StreamWriter pobjFichier, string pParoles)
         {
-            pobjFichier.WriteLine(OutilsFormats.DecoderAAC(pParoles));
+            pobjFichier.WriteLine(OutilsFormats.EncoderAAC(pParoles));
             pobjFichier.Close();
         }
         public override void EcrireEntete(StreamWriter pobjFichier)

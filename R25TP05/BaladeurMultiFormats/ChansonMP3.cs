@@ -36,7 +36,7 @@ namespace BaladeurMultiFormats
         }
         public override void EcrireParoles(StreamWriter pobjFichier, string pParoles)
         {
-            pobjFichier.WriteLine(OutilsFormats.DecoderMP3(pParoles));
+            pobjFichier.WriteLine(OutilsFormats.EncoderMP3(pParoles));
             pobjFichier.Close();
         }
         public override void EcrireEntete(StreamWriter pobjFichier)
