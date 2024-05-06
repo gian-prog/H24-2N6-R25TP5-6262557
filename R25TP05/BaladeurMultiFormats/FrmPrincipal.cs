@@ -24,9 +24,11 @@ namespace BaladeurMultiFormats
             Text += APP_INFO;
             MonHistorique = new Historique();
             // À COMPLÉTER...
-            ChansonAAC chansonAAC = new ChansonAAC("Chansons\\Blame it on me.aac") ;
-            ChansonMP3 chansonMP3 = new ChansonMP3("Chansons\\Billie Jean.mp3");
-            ChansonWMA chansonWMA = new ChansonWMA("Chansons\\Hotel California.wma");
+
+            //Tests
+            //ChansonAAC chansonAAC = new ChansonAAC("Chansons\\Blame it on me.aac") ;
+            //ChansonMP3 chansonMP3 = new ChansonMP3("Chansons\\Billie Jean.mp3");
+            //ChansonWMA chansonWMA = new ChansonWMA("Chansons\\Hotel California.wma");
             baladeur.ConstruireLaListeDesChansons();
             baladeur.AfficherLesChansons(lsvChansons);
             lblNbChansons.Text = baladeur.NbChansons.ToString();
@@ -62,10 +64,10 @@ namespace BaladeurMultiFormats
         {
             // Vider l'historique car les références ne sont plus bonnes
             // À COMPLÉTER...
-            //Historique historique = new Historique();
-            //historique.Clear();
-            //baladeur.ConvertirVersMP3(lsvChansons.SelectedIndices[0]);
-            //baladeur.AfficherLesChansons(lsvChansons);
+            Historique historique = new Historique();
+            historique.Clear();
+            baladeur.ConvertirVersMP3(lsvChansons.SelectedIndices[0]);
+            baladeur.AfficherLesChansons(lsvChansons);
         }
         private void MnuFormatConvertirVersWMA_Click(object sender, EventArgs e)
         {

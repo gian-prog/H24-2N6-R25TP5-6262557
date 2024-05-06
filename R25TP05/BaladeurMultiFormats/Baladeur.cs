@@ -108,7 +108,12 @@ namespace BaladeurMultiFormats
 
         public void ConvertirVersMP3(int pIndex)
         {
-            throw new NotImplementedException();
+            string fileName = m_colChansons[pIndex].NomFichier;
+            ChansonMP3 chansMP3 = new ChansonMP3(NOM_RÉPERTOIRE, m_colChansons[pIndex].Artiste, m_colChansons[pIndex].Titre, m_colChansons[pIndex].Annee);
+            chansMP3.Ecrire(m_colChansons[pIndex].Paroles);
+            File.Delete(fileName);
+            m_colChansons.RemoveAt(pIndex);
+            m_colChansons.Add(chansMP3);
         }
 
         public void ConvertirVersWMA(int pIndex)
