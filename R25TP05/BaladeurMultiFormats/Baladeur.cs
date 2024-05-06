@@ -27,6 +27,7 @@ namespace BaladeurMultiFormats
         #region Méthodes
         public void AfficherLesChansons(ListView pListView)
         {
+            pListView.Items.Clear();
             foreach (Chanson chans in m_colChansons)
             {
                 ListViewItem vue = new ListViewItem(chans.Artiste);
@@ -39,7 +40,11 @@ namespace BaladeurMultiFormats
 
         public Chanson ChansonAt(int pIndex)
         {
-            throw new NotImplementedException();
+            if (pIndex != -1)
+            {
+                return m_colChansons[pIndex];
+            }
+            return null;
         }
 
         public void ConstruireLaListeDesChansons()
@@ -93,7 +98,12 @@ namespace BaladeurMultiFormats
 
         public void ConvertirVersAAC(int pIndex)
         {
-            throw new NotImplementedException();
+            string fileName = m_colChansons[pIndex].NomFichier;
+            ChansonAAC chansAAC = new ChansonAAC(NOM_RÉPERTOIRE, m_colChansons[pIndex].Artiste, m_colChansons[pIndex].Titre, m_colChansons[pIndex].Annee);
+            chansAAC.Ecrire(m_colChansons[pIndex].Paroles);
+            File.Delete(fileName);
+            m_colChansons.RemoveAt(pIndex);
+            m_colChansons.Add(chansAAC);        
         }
 
         public void ConvertirVersMP3(int pIndex)
