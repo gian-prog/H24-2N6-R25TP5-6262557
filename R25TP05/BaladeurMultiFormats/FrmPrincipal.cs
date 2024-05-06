@@ -73,10 +73,10 @@ namespace BaladeurMultiFormats
         {
             // Vider l'historique car les références ne sont plus bonnes
             // À COMPLÉTER...
-            //Historique historique = new Historique();
-            //historique.Clear();
-            //baladeur.ConvertirVersWMA(lsvChansons.SelectedIndices[0]);
-            //baladeur.AfficherLesChansons(lsvChansons);
+            Historique historique = new Historique();
+            historique.Clear();
+            baladeur.ConvertirVersWMA(lsvChansons.SelectedIndices[0]);
+            baladeur.AfficherLesChansons(lsvChansons);
         }
         #endregion
         //---------------------------------------------------------------------------------
