@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BaladeurMultiFormats
 {
-    public abstract class Chanson
+    public abstract class Chanson : IChanson
     {
         #region Propriétés
         protected int m_annee;
@@ -79,11 +79,10 @@ namespace BaladeurMultiFormats
         /// <param name="pAnnée"></param>
         public Chanson(string pRepertoire, string pArtiste, string pTitre, int pAnnée)
         {
-            m_nomFichier = pRepertoire + "\\" + pTitre + "\\" + pArtiste + "\\" + pAnnée;
+            m_nomFichier = pRepertoire + "\\" + pTitre + "." + Format.ToLower();
             m_artiste = pArtiste;
             m_titre = pTitre;
             m_annee = pAnnée;
-            LireEntete();
         }
 
         #endregion

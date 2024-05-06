@@ -17,6 +17,7 @@ namespace BaladeurMultiFormats
         #endregion
         //---------------------------------------------------------------------------------
         #region FrmPrincipal
+        Baladeur baladeur = new Baladeur();
         public FrmPrincipal()
         {
             InitializeComponent();
@@ -25,8 +26,7 @@ namespace BaladeurMultiFormats
             // À COMPLÉTER...
             ChansonAAC chansonAAC = new ChansonAAC("Chansons\\Blame it on me.aac") ;
             ChansonMP3 chansonMP3 = new ChansonMP3("Chansons\\Billie Jean.mp3");
-            ChansonWMA chansonWMA = new ChansonWMA("Chansons\\Bad Guy.wma");
-            Baladeur baladeur = new Baladeur();
+            ChansonWMA chansonWMA = new ChansonWMA("Chansons\\Hotel California.wma");
             baladeur.ConstruireLaListeDesChansons();
             baladeur.AfficherLesChansons(lsvChansons);
             lblNbChansons.Text = baladeur.NbChansons.ToString();
@@ -53,16 +53,28 @@ namespace BaladeurMultiFormats
         {
             // Vider l'historique car les références ne sont plus bonnes
             // À COMPLÉTER...
+            Historique historique = new Historique();
+            historique.Clear();
+            baladeur.ConvertirVersAAC(lsvChansons.SelectedIndices[0]);
+            baladeur.AfficherLesChansons(lsvChansons);
         }
         private void MnuFormatConvertirVersMP3_Click(object sender, EventArgs e)
         {
             // Vider l'historique car les références ne sont plus bonnes
             // À COMPLÉTER...
+            //Historique historique = new Historique();
+            //historique.Clear();
+            //baladeur.ConvertirVersMP3(lsvChansons.SelectedIndices[0]);
+            //baladeur.AfficherLesChansons(lsvChansons);
         }
         private void MnuFormatConvertirVersWMA_Click(object sender, EventArgs e)
         {
             // Vider l'historique car les références ne sont plus bonnes
             // À COMPLÉTER...
+            //Historique historique = new Historique();
+            //historique.Clear();
+            //baladeur.ConvertirVersWMA(lsvChansons.SelectedIndices[0]);
+            //baladeur.AfficherLesChansons(lsvChansons);
         }
         #endregion
         //---------------------------------------------------------------------------------

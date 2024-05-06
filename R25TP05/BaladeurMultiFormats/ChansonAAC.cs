@@ -25,6 +25,7 @@ namespace BaladeurMultiFormats
             m_artiste = tabArtiste[1].Trim();
             m_titre = tabtitre[1].Trim();
             m_annee = int.Parse(tabAnnee[1].Trim());
+            reader.Close();
         }
 
         /// <summary>
@@ -39,13 +40,11 @@ namespace BaladeurMultiFormats
         }
         public override void EcrireParoles(StreamWriter pobjFichier, string pParoles)
         {
-            pobjFichier.WriteLine(OutilsFormats.EncoderAAC(pParoles));
-            pobjFichier.Close();
+            pobjFichier.Write(OutilsFormats.EncoderAAC(pParoles));
         }
         public override void EcrireEntete(StreamWriter pobjFichier)
         {
             pobjFichier.WriteLine("TITRE = " + Titre + " : ARTISTE = " + Artiste + " : ANNÉE = " + Annee);
-            pobjFichier.Close();
         }
         #endregion
         #region Constructeurs
