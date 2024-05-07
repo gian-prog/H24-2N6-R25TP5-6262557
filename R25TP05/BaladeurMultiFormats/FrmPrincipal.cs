@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.IO;
-
+using Microsoft.SqlServer.Server;
 
 namespace BaladeurMultiFormats
 {
@@ -32,6 +32,7 @@ namespace BaladeurMultiFormats
             baladeur.ConstruireLaListeDesChansons();
             baladeur.AfficherLesChansons(lsvChansons);
             lblNbChansons.Text = baladeur.NbChansons.ToString();
+            MettreAJourSelonContexte();
         }
         #endregion
         //---------------------------------------------------------------------------------
@@ -39,6 +40,32 @@ namespace BaladeurMultiFormats
         private void MettreAJourSelonContexte()
         {
             // À COMPLÉTER...
+            if (lsvChansons.SelectedIndices.Count > 0)
+            {
+                switch (baladeur.ChansonAt(lsvChansons.SelectedIndices[0]).Format.ToLower())
+                {
+                    case "aac":
+                        MnuFormatConvertirVersAAC.Enabled = false;
+                        MnuFormatConvertirVersMP3.Enabled = true;
+                        MnuFormatConvertirVersWMA.Enabled = true;
+                        break;
+
+                    case "mp3":
+                        MnuFormatConvertirVersAAC.Enabled = true;
+                        MnuFormatConvertirVersMP3.Enabled = false;
+                        MnuFormatConvertirVersWMA.Enabled = true;
+
+                        break;
+
+                    case "wma":
+                        MnuFormatConvertirVersAAC.Enabled = true;
+                        MnuFormatConvertirVersMP3.Enabled = true;
+                        MnuFormatConvertirVersWMA.Enabled = false;
+
+                        break;
+                }
+            }
+            
         }
         #endregion
         //---------------------------------------------------------------------------------
@@ -46,6 +73,7 @@ namespace BaladeurMultiFormats
         private void LsvChansons_SelectedIndexChanged(object sender, EventArgs e)
         {
             // À COMPLÉTER...
+
         }
         #endregion
 
@@ -55,28 +83,32 @@ namespace BaladeurMultiFormats
         {
             // Vider l'historique car les références ne sont plus bonnes
             // À COMPLÉTER...
-            Historique historique = new Historique();
-            historique.Clear();
+           
+            MonHistorique.Clear();
             baladeur.ConvertirVersAAC(lsvChansons.SelectedIndices[0]);
             baladeur.AfficherLesChansons(lsvChansons);
+            MettreAJourSelonContexte();
         }
         private void MnuFormatConvertirVersMP3_Click(object sender, EventArgs e)
         {
             // Vider l'historique car les références ne sont plus bonnes
             // À COMPLÉTER...
-            Historique historique = new Historique();
-            historique.Clear();
+            MonHistorique.Clear();
             baladeur.ConvertirVersMP3(lsvChansons.SelectedIndices[0]);
             baladeur.AfficherLesChansons(lsvChansons);
+            MettreAJourSelonContexte();
+
         }
         private void MnuFormatConvertirVersWMA_Click(object sender, EventArgs e)
         {
             // Vider l'historique car les références ne sont plus bonnes
             // À COMPLÉTER...
-            Historique historique = new Historique();
-            historique.Clear();
+            MonHistorique.Clear();
             baladeur.ConvertirVersWMA(lsvChansons.SelectedIndices[0]);
             baladeur.AfficherLesChansons(lsvChansons);
+            MettreAJourSelonContexte();
+
+
         }
         #endregion
         //---------------------------------------------------------------------------------

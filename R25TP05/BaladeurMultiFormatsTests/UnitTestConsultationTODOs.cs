@@ -30,22 +30,24 @@ namespace BaladeurMultiFormats.Tests
         // TODO Test A : ConsultationTestPourUneConsulationParam2NullTest
         // Compléter la méthode pour tester le constructeur au cas où la chanson passée en 
         // deuxième paramètre est à null
-
+        [TestMethod()]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void ConsultationTestPourUneConsulationParam2NullTest()
         {
 
             // Arrange/Act : Instancier un objet Consultation avec la date actuelle et une chanson à null
             // À compléter...
-
+            Consultation objConsultation = new Consultation(DateTime.Now, null);
            
             // Assert : Vérifier si le constructeur lève une exception ArgumentNullException
             // À compléter...
+            Assert.IsNotNull(objConsultation);
         }
 
         // TODO Test B : ConsultationTestParamètreDateTest
         // Compléter la méthode pour tester si la propriété Date de la classe Consultation
-        
-       
+        [TestMethod()]
+
         public void ConsultationTestParamètreDateTest()
         {
             // Arrange : Instancier un objet ChansonsAAC 
@@ -55,25 +57,33 @@ namespace BaladeurMultiFormats.Tests
 
             // Act : Récupérer la date de consultation de la chanson en utilisant la propriété Date 
             // À compléter...
-
+            DateTime date = DateTime.Now;
+            ChansonAAC chansonAAC = new ChansonAAC("Chansons\\Blame it on me.aac");
+            Consultation objConsultation = new Consultation(date, chansonAAC);
             // Assert : Vérifier si la propriété Date retourne la bonne date
             // À compléter...
+            Assert.AreEqual(DateTime.Now, objConsultation.Date);
 
 
         }
 
         // TODO Test C : ConsultationTestParamètreDélaiTest
         // Compléter la méthode pour tester la propriété Délai
+        [TestMethod()]
+
         public void ConsultationTestParamètreDélaiTest()
         {
             // Arrange : Instancier un objet ChansonsAAC 
             // Instancier un objet DateTime pour le 1er janvier 2021
             // Instancier un objet consultation en utilisant les deux objets que vous venez de créer
             // À compléter...
-
+            DateTime date = new DateTime(2021, 01, 01);
+            ChansonAAC chansonAAC = new ChansonAAC("Chansons\\Blame it on me.aac");
+            Consultation objConsultation = new Consultation(date, chansonAAC);
             // Act : Récupérer le délai de la en utilisant la propriété Délai
             // À compléter...
 
+            //objConsultation.Délai;
 
             // Assert : Vérifier si la propriété Délai calcule et retourne le bon délai 
             // À compléter...
