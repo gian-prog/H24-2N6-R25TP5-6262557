@@ -41,7 +41,7 @@ namespace BaladeurMultiFormats.Tests
            
             // Assert : Vérifier si le constructeur lève une exception ArgumentNullException
             // À compléter...
-            Assert.IsNotNull(objConsultation);
+            Assert.IsNull(objConsultation);
         }
 
         // TODO Test B : ConsultationTestParamètreDateTest
