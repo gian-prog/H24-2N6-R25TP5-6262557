@@ -62,7 +62,7 @@ namespace BaladeurMultiFormats.Tests
             Consultation objConsultation = new Consultation(date, chansonAAC);
             // Assert : Vérifier si la propriété Date retourne la bonne date
             // À compléter...
-            Assert.AreEqual(DateTime.Now, objConsultation.Date);
+            Assert.AreEqual(date, objConsultation.Date);
 
 
         }
@@ -77,32 +77,41 @@ namespace BaladeurMultiFormats.Tests
             // Instancier un objet DateTime pour le 1er janvier 2021
             // Instancier un objet consultation en utilisant les deux objets que vous venez de créer
             // À compléter...
-            DateTime date = new DateTime(2021, 01, 01);
+            DateTime dateCourant = DateTime.Now;
+            DateTime datePara = new DateTime(2021, 01, 01);
             ChansonAAC chansonAAC = new ChansonAAC("Chansons\\Blame it on me.aac");
-            Consultation objConsultation = new Consultation(date, chansonAAC);
+            Consultation objConsultation = new Consultation(datePara, chansonAAC);
             // Act : Récupérer le délai de la en utilisant la propriété Délai
             // À compléter...
 
-            //objConsultation.Délai;
+            int valeurDelay = objConsultation.Délai;
+            
 
             // Assert : Vérifier si la propriété Délai calcule et retourne le bon délai 
             // À compléter...
-
+            int valueTimespan = (int)(dateCourant - datePara).TotalSeconds;
+            Assert.AreEqual(valeurDelay,valueTimespan);
         }
         // TODO Test D : ConsultationTestParamètreChansonTest
         // Compléter la méthode pour tester la propriété LaChanson
+        [TestMethod()]
+
         public void ConsultationTestParamètreChansonTest()
         {
             // Arrange : Instancier un objet ChansonsAAC 
             // Instancier un objet consultation avec la date actuelle et l'objet ChansonAAC
             // À compléter...
+            DateTime dateCourant = DateTime.Now;
+            ChansonAAC chansonAAC = new ChansonAAC("Chansons\\Blame it on me.aac");
+            Consultation objConsultation = new Consultation(dateCourant, chansonAAC);
 
             // Act : Récupérer la chanson avec la propriété LaChanson
             // À compléter...
-
+            ChansonAAC chanson = (ChansonAAC)objConsultation.LaChanson;
 
             // Assert : Vérifier si la propriété LaChanson retourne la bonne chanson
             // À compléter...
+            Assert.AreEqual(chansonAAC, chanson);
 
         }
     }

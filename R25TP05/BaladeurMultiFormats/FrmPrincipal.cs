@@ -32,7 +32,6 @@ namespace BaladeurMultiFormats
             baladeur.ConstruireLaListeDesChansons();
             baladeur.AfficherLesChansons(lsvChansons);
             lblNbChansons.Text = baladeur.NbChansons.ToString();
-            MettreAJourSelonContexte();
         }
         #endregion
         //---------------------------------------------------------------------------------
@@ -73,6 +72,14 @@ namespace BaladeurMultiFormats
         private void LsvChansons_SelectedIndexChanged(object sender, EventArgs e)
         {
             // À COMPLÉTER...
+            MettreAJourSelonContexte();
+            if (lsvChansons.SelectedIndices.Count > 0)
+            {
+                txtParoles.Text = baladeur.ChansonAt(lsvChansons.SelectedIndices[0]).Paroles;
+                Historique consultations = new Historique();
+                Consultation consultation = new Consultation(DateTime.Now, baladeur.ChansonAt(lsvChansons.SelectedIndices[0]));
+                consultations.Add(consultation);
+            }
 
         }
         #endregion
@@ -87,7 +94,7 @@ namespace BaladeurMultiFormats
             MonHistorique.Clear();
             baladeur.ConvertirVersAAC(lsvChansons.SelectedIndices[0]);
             baladeur.AfficherLesChansons(lsvChansons);
-            MettreAJourSelonContexte();
+
         }
         private void MnuFormatConvertirVersMP3_Click(object sender, EventArgs e)
         {
@@ -96,7 +103,7 @@ namespace BaladeurMultiFormats
             MonHistorique.Clear();
             baladeur.ConvertirVersMP3(lsvChansons.SelectedIndices[0]);
             baladeur.AfficherLesChansons(lsvChansons);
-            MettreAJourSelonContexte();
+
 
         }
         private void MnuFormatConvertirVersWMA_Click(object sender, EventArgs e)
@@ -106,7 +113,6 @@ namespace BaladeurMultiFormats
             MonHistorique.Clear();
             baladeur.ConvertirVersWMA(lsvChansons.SelectedIndices[0]);
             baladeur.AfficherLesChansons(lsvChansons);
-            MettreAJourSelonContexte();
 
 
         }
