@@ -76,9 +76,8 @@ namespace BaladeurMultiFormats
             if (lsvChansons.SelectedIndices.Count > 0)
             {
                 txtParoles.Text = baladeur.ChansonAt(lsvChansons.SelectedIndices[0]).Paroles;
-                Historique consultations = new Historique();
                 Consultation consultation = new Consultation(DateTime.Now, baladeur.ChansonAt(lsvChansons.SelectedIndices[0]));
-                consultations.Add(consultation);
+                MonHistorique.Add(consultation);
             }
 
         }

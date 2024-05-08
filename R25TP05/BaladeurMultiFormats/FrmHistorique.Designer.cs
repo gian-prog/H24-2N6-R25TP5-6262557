@@ -73,7 +73,8 @@
             this.lsvChansons.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lsvChansons.FullRowSelect = true;
             this.lsvChansons.GridLines = true;
-            this.lsvChansons.Location = new System.Drawing.Point(30, 55);
+            this.lsvChansons.HideSelection = false;
+            this.lsvChansons.Location = new System.Drawing.Point(30, 58);
             this.lsvChansons.MultiSelect = false;
             this.lsvChansons.Name = "lsvChansons";
             this.lsvChansons.Size = new System.Drawing.Size(376, 640);
